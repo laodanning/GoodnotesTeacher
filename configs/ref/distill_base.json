@@ -3,7 +3,7 @@
     "eval_datasets":"/mnt/search01/dataset/laodanning/data/good_notes/eval/random_easy/",
     "test_datasets":"../datasets/notes/v1/test.csv",
     "model_name_or_path": "hfl/chinese-lert-base",
-    "output_dir": "/data/chen/goodnote/base_distill_1013/",
+    "output_dir": "/mnt/search01/usr/laodanning/GoodnotesTeacher/outputs/teacher_distill_base",
     "logging_steps":50,
     "per_device_train_batch_size":64,
     "gradient_accumulation_steps":8,

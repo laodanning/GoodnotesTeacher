@@ -27,7 +27,7 @@ from model.models import model_dict, RegressionModel
 from model.trainer import BaseTrainer
 from transformers import AdamW, get_linear_schedule_with_warmup, get_cosine_schedule_with_warmup
 from torch.optim import lr_scheduler
-from model.data_loader import Input_Datasets
+from model.data_loader import Input_Datasets, Distill_Datasets
 from tqdm import tqdm
 from utils.args import My_training_args, ModelArguments, DataArguments
 from model.metric import metrics_1, metric_auc
@@ -115,39 +115,47 @@ def run():
     # 解析输入的数据集
     if rank == -1:
         print(data_args)
-        train_dataset, eval_dataset = Input_Datasets(
-            data_args=data_args,
+        train_dataset, eval_dataset = Distill_Datasets(
+            train_dir=data_args.train_datasets,
+            test_dir=data_args.eval_datasets,
+            data_seed=100,
             tokenizer=tokenizer,
-            task=training_args.task,
+            cache_dir=data_args.datasets_cache_dir,
         ).get_datasets()
 
     else:
         if rank == 0:
-            train_dataset, eval_dataset = Input_Datasets(
-                data_args=data_args,
+            train_dataset, eval_dataset = Distill_Datasets(
+                train_dir=data_args.train_datasets,
+                test_dir=data_args.eval_datasets,
+                data_seed=100,
                 tokenizer=tokenizer,
-                task=training_args.task,
-                # rank=rank
+                cache_dir=data_args.datasets_cache_dir,
             ).get_datasets()
         # 由于datasets会存储cache，所以多进程加载时需要
         torch.distributed.barrier()
         if rank != 0:
-            train_dataset, eval_dataset = Input_Datasets(
-                data_args=data_args,
+            train_dataset, eval_dataset = Distill_Datasets(
+                train_dir=data_args.train_datasets,
+                test_dir=data_args.eval_datasets,
+                data_seed=100,
                 tokenizer=tokenizer,
-                task=training_args.task,
-                # rank=rank
+                cache_dir=data_args.datasets_cache_dir,
             ).get_datasets()
 
     """有时候数据集换来换去，训练集和验证集会有一些重复，在这里加一道检查工序。
     Posttrain与predict时没有eval_datasets"""
-    if training_args.task not in ['post', 'predict']:
-        train_dataset, eval_dataset = remove_duplicate_in_train(train_dataset, eval_dataset)
+    # if training_args.task not in ['post', 'predict']:
+    #     train_dataset, eval_dataset = remove_duplicate_in_train(train_dataset, eval_dataset)
         # train_dataset = train_dataset.shuffle(seed=42)
 
     # 检查一下分词是否正确
     if rank <= 0:
         print('Examples: ', train_dataset[15:16])
+
+    if training_args.local_rank<=0:
+        print(train_dataset, eval_dataset)
+    train_dataset = train_dataset.shuffle(seed=42)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     if training_args.local_rank >= 0:
