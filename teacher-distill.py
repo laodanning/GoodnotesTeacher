@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # 奇怪的bug，先import pandas后import torch会报错，不要改变这边import pkg的顺序，不要改变！
 import torch
 
