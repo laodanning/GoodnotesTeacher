@@ -1,5 +1,5 @@
 {
-    "train_datasets":"/mnt/public03/dataset/datasets_0720/good_notes/",
+    "train_datasets":"/mnt/search01/usr/laodanning/GoodnotesTeacher/data/train_chunk",
     "eval_datasets":"/mnt/search01/dataset/laodanning/data/good_notes/eval/random_easy/",
     "test_datasets":"/mnt/search01/dataset/laodanning/data/good_notes/eval/random_easy/",
     "model_type":"base",
