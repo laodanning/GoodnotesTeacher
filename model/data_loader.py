@@ -43,7 +43,7 @@ class Input_Datasets(Dataset):
     def tokenize_example(self, example):
         # 去除query30词以后的内容，超长query会在padding以后拖慢整个batch的计算速度
         target = example['label']
-        encoding = self.tokenizer(example['sentence1'][:30],
+        encoding = self.tokenizer(example['sentence1'],
                                   example['sentence2'],
                                   truncation=True, padding=True,
                                   max_length=self.tokenizer_length,
