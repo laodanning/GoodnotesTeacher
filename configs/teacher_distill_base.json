@@ -1,5 +1,5 @@
 {
-    "train_datasets":"/mnt/search01/usr/laodanning/GoodnotesTeacher/data/train_chunk",
+    "train_datasets":"/mnt/public03/dataset/datasets_0720/good_notes",
     "eval_datasets":"/mnt/search01/dataset/laodanning/data/good_notes/eval/random_easy/",
     "test_datasets":"/mnt/search01/dataset/laodanning/data/good_notes/eval/random_easy/",
     "model_type":"base",
@@ -21,7 +21,7 @@
     "metric_for_best_model": "auc",
     "greater_is_better": true,
     "per_device_eval_batch_size": 915,
-    "num_train_epochs": 8,
+    "num_train_epochs": 12,
     "learning_rate": 2e-4,
     "seed": 100,
     "load_best_model_at_end": false,
