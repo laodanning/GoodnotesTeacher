@@ -183,7 +183,7 @@ def pos_neg_rate(score1, score2, is_full=False):
 
 
 if __name__=='__main__':
-   model_path = '/mnt/search01/usr/laodanning/GoodnotesTeacher/outputs/teacher_distill_base/checkpoint-22500'
+   model_path = '/mnt/search01/usr/laodanning/GoodnotesTeacher/outputs/teacher_distill_base/checkpoint-24000'
    data_path = '/mnt/search01/dataset/laodanning/data/good_notes/eval/'
    score_3 = evaluate(model_path, data_path+'/random_easy',)
    # # 0.8190870870521543

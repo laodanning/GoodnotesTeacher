@@ -211,7 +211,9 @@ def run():
             callbacks=[SaveMetricResultsCallback(output_dir)],
         )
 
-    trainer.train()
+    for epoch in range(training_args.num_train_epochs):
+        trainer.train()
+        evaluation_results = trainer.evaluate(eval_dataset)
 
 
 def _mp_fn(index):
