@@ -74,10 +74,10 @@ class SaveMetricResultsCallback(TrainerCallback):
         self.save_results(args.local_rank)
 
     def save_results(self, rank):
-        # print('saving.......'+'*'*20)
         if not os.path.exists(self.output_dir):
             os.makedirs(self.output_dir)
         file_path = os.path.join(self.output_dir, "metric_results.txt")
+        print('saving.......' + '*' * 20,'at',file_path)
         with open(file_path, "w") as file:
             for metrics in self.metric_results:
                 file.write(str(metrics) + "\n")
@@ -211,9 +211,7 @@ def run():
             callbacks=[SaveMetricResultsCallback(output_dir)],
         )
 
-    for epoch in range(training_args.num_train_epochs):
-        trainer.train()
-        evaluation_results = trainer.evaluate(eval_dataset)
+    trainer.train()
 
 
 def _mp_fn(index):
