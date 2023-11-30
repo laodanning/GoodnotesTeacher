@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # 用作测试集infer
 import os
 os.environ['TRANSFORMERS_CACHE'] = '../.cache'
