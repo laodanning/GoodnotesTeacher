@@ -12,7 +12,7 @@
     "logging_steps":100,
     "per_device_train_batch_size":96,
     "gradient_accumulation_steps":6,
-    "evaluation_strategy":"no",
+    "evaluation_strategy":"steps",
     "eval_steps":150,
     "save_steps": 1500,
     "save_strategy": "steps",
@@ -24,10 +24,11 @@
     "num_train_epochs": 8,
     "learning_rate": 2e-4,
     "seed": 100,
-    "load_best_model_at_end": false,
+    "load_best_model_at_end": true,
     "dataloader_num_workers":100,
     "is_freeze": false,
     "save_on_each_node":true,
     "sharded_ddp":"zero_dp_2",
-    "warmup_ratio": 0.1
+    "warmup_ratio": 0.1,
+    "resume_from_checkpoint":"/mnt/search01/usr/laodanning/GoodnotesTeacher/outputs/teacher_distill_base/checkpoint-24000"
     }
