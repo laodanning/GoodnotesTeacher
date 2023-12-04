@@ -211,8 +211,8 @@ def run():
             callbacks=[SaveMetricResultsCallback(output_dir)],
         )
 
-    trainer.train(resume_from_checkpoint=training_args.resume_from_checkpoint)
-
+    #trainer.train(resume_from_checkpoint=training_args.resume_from_checkpoint)
+    trainer.train()
 
 def _mp_fn(index):
     run()
