@@ -95,6 +95,7 @@ class My_training_args(TrainingArguments):
         metadata={
             "help": "soft label : hard label's loss weight"
         },
+
     )
     
 @dataclass
