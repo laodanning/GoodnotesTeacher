@@ -110,7 +110,7 @@ def run():
     #     })
 
     # 定义tokenizer
-    transformers.logging.set_verbosity_error()
+    transformers.logging.set_verbosity_info()
     model_name_or_path = model_args.model_name_or_path
     tokenizer = tokenizer_dict[model_args.model_type]
     # 解析输入的数据集
