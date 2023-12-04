@@ -3,7 +3,7 @@
     "eval_datasets":"/mnt/search01/dataset/laodanning/data/good_notes/eval/random_easy/",
     "test_datasets":"/mnt/search01/dataset/laodanning/data/good_notes/eval/random_easy/",
     "model_type":"base",
-    "model_name_or_path": "/mnt/search01/usr/laodanning/GoodnotesTeacher/outputs/teacher_distill_base/checkpoint-24000",
+    "model_name_or_path": "/mnt/search01/usr/laodanning/GoodnotesTeacher/outputs/teacher_distill_base/checkpoint-69000",
     "output_dir": "/mnt/search01/usr/laodanning/GoodnotesTeacher/outputs/teacher_distill_base",
     "task":"post",
     "fp16":true,
