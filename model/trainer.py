@@ -145,7 +145,7 @@ class BaseTrainer(Trainer):
         for _, inputs in enumerate(dataloader):
             inputs = self._prepare_inputs(inputs)
             with torch.no_grad():
-                labels_ = inputs["label"]
+                labels_ = inputs["target"]
                 # print(labels_)
                 logits = model(**inputs)
                 # print(y_hat.shape, labels_.shape)
