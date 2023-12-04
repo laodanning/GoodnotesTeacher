@@ -30,5 +30,5 @@
     "save_on_each_node":true,
     "sharded_ddp":"zero_dp_2",
     "warmup_ratio": 0.1,
-    "resume_from_checkpoint":"/mnt/search01/usr/laodanning/GoodnotesTeacher/outputs/teacher_distill_base/checkpoint-24000"
+    "resume_from_checkpoint":"/mnt/search01/usr/laodanning/GoodnotesTeacher/outputs/teacher_distill_base/checkpoint-69000"
     }
